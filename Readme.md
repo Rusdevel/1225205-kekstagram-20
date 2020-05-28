@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Руслан Бестаев](https://up.htmlacademy.ru/javascript/20/user/1225205).
-* Наставник: Дмитрий Быков.
+* Наставник: Дмитрий Быков (https://up.htmlacademy.ru/javascript/20/user/618225).
 
 ---
 
