@@ -12,8 +12,12 @@ var SOMETHIG_MESSAGES = ['Всё отлично!', 'В целом всё неп�
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 var NAMES = ['Петя', 'Саша', 'Маша', 'Павел', 'Юля', 'Вова'];
 
-var picturesTemplate = document.querySelector('#picture');
+var picturesTemplate = document.querySelector('#picture').content
+.querySelector('.picture');
 var picturesContainer = document.querySelector('.pictures');
+var bigPicture = document.querySelector('.big-picture');
+var socialCommentCount = document.querySelector('.social__comment-count');
+var commentsLoader = document.querySelector('.comments-loader');
 
 // случайное целое число в пределах min-max
 function getRandomNumber(min, max) {
@@ -65,3 +69,41 @@ var showPicture = function (objects) {
 };
 
 
+// продолжаем
+
+var renderSocialComment = function (comment, template) {
+  var socialComment = template.cloneNode(true);
+  socialComment.querySelector('.social__picture').src = comment.avatar;
+  socialComment.querySelector('.social__picture').alt = comment.name;
+  socialComment.querySelector('.social__text').textContent = comment.message;
+  return socialComment;
+};
+
+var renderBigPicture = function (picture) {
+  var socialComment = bigPicture.querySelector('.social__comment');
+  bigPicture.querySelector('.big-picture__img').src = picture.url;
+  bigPicture.querySelector('.likes-count').textContent = picture.likes;
+  bigPicture.querySelector('.social__caption').textContent = picture.description;
+
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < picture.comments.length; i++) {
+    fragment.appendChild(renderSocialComment(picture.comments[i], socialComment));
+  }
+  if (picture.comments.length > 0) {
+    bigPicture.querySelector('.social__comments').innerHTML = '';
+  }
+  bigPicture.querySelector('.social__comments').appendChild(fragment);
+  return bigPicture;
+};
+
+var init = function () {
+  var pictures = photoDescription();
+  showPicture(pictures);
+  renderBigPicture(pictures[0]);
+  bigPicture.classList.remove('hidden');
+  socialCommentCount.classList.add('hidden');
+  commentsLoader.classList.add('hidden');
+  document.body.classList.add('modal-open');
+};
+
+init();
