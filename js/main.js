@@ -24,12 +24,12 @@ function getRandomNumber(min, max) {
   return Math.floor(min + Math.random() * (max - min + 1));
 }
 
-// Создание  массива сомментариев
+// Создание  массива комментариев
 var getComment = function (count) {
   var avatar = 'img/avatar-' + getRandomNumber(MIN_NUMBER_AVATAR, MAX_NUMBER_AVATAR) + '.svg';
   var comments = [];
   for (var i = 0; i < count; i++) {
-    comments.push = ({
+    comments.push({
       avatar: avatar,
       message: SOMETHIG_MESSAGES[getRandomNumber(0, 5)],
       name: NAMES[getRandomNumber(0, 5)],
@@ -42,7 +42,7 @@ var getComment = function (count) {
 var photoDescription = function () {
   var objectPhotoDescription = [];
   for (var i = 1; i <= NUMBER_OF_PHOTOS; i++) {
-    objectPhotoDescription.push = ({
+    objectPhotoDescription.push({
       url: 'photos/' + i + '.jpg',
       description: 'Описание фото',
       likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
@@ -69,8 +69,6 @@ var showPicture = function (objects) {
 };
 
 
-// продолжаем
-
 var renderSocialComment = function (comment, template) {
   var socialComment = template.cloneNode(true);
   socialComment.querySelector('.social__picture').src = comment.avatar;
@@ -81,7 +79,7 @@ var renderSocialComment = function (comment, template) {
 
 var renderBigPicture = function (picture) {
   var socialComment = bigPicture.querySelector('.social__comment');
-  bigPicture.querySelector('.big-picture__img').src = picture.url;
+  bigPicture.querySelector('.big-picture__img img').src = picture.url;
   bigPicture.querySelector('.likes-count').textContent = picture.likes;
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
