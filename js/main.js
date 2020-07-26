@@ -130,10 +130,12 @@ var photofilters = document.querySelectorAll('.effects__preview');
 var divFullPhoto = document.querySelector('.img-upload__preview');
 var fullPhoto = divFullPhoto.querySelector('img');
 
+// var valuePin;
 
 var addEvents = function (filterPicture, style) {
   filterPicture.addEventListener('click', function () {
-    // fullPhoto.style.filter = grayscale(1);
+  // fullPhoto.style.filter = grayscale(valuePin * 1 / 100);
+  // fullPhoto.style.filter = blur(valuePin * 3 / 100);
     if (style !== '') {
       fullPhoto.classList.add(style);
     }
@@ -148,10 +150,10 @@ var addEvents = function (filterPicture, style) {
 for (var i = 0; i < photofilters.length; i++) {
   addEvents(photofilters[i], arrayStyle[i]);
 }
-var pinInput = document.querySelector('.effect-level__value');
+// var pinInput = document.querySelector('.effect-level__value');
 
 var onMouseupPin = function () {
-  var valuePin = pinInput.value;
+  // valuePin = pinInput.value;
 
 };
 var pin = document.querySelector('.effect-level__pin');
@@ -178,15 +180,15 @@ imageUploadButton.addEventListener('click', function () {
     inputHashTag.setCustomValidity('колличество хештегов не должно превышать ' + MAX_QUANTITY_HASHTAGS);
   }
 
-  for (var i = 0; i < sorthashtags.length; i++) {
-    var hashtag = sorthashtags[i];
+  for (var j = 0; j < sorthashtags.length; j++) {
+    var hashtag = sorthashtags[j];
     if (hashtag.length === 0) {
       continue;
     } // если хештегов нет, пропускаем
     if (!checkForm.test(hashtag)) {
       inputHashTag.setCustomValidity('Хэштег ' + hashtag + ' должен соответствовать критериям ввода: символ #, за которым следуют любые не специальные символы (от 1 до 20) без пробелов');
     }// проверяем на условия символов
-    if (hashtag === sorthashtags[i + 1]) {
+    if (hashtag === sorthashtags[j + 1]) {
       inputHashTag.setCustomValidity('Хештеги не могут повторяться');
     }
     // проверяем на повторяния хештегов
