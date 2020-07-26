@@ -104,7 +104,7 @@ var init = function () {
   document.body.classList.add('modal-open');
 };
 
-// init();
+init();
 var fileInput = document.querySelector('#upload-file');
 var uploadingForm = document.querySelector('.img-upload__overlay');
 
@@ -133,7 +133,7 @@ var fullPhoto = divFullPhoto.querySelector('img');
 
 var addEvents = function (filterPicture, style) {
   filterPicture.addEventListener('click', function () {
-    //fullPhoto.style.filter = grayscale(1);
+    // fullPhoto.style.filter = grayscale(1);
     if (style !== '') {
       fullPhoto.classList.add(style);
     }
@@ -149,9 +149,9 @@ for (var i = 0; i < photofilters.length; i++) {
   addEvents(photofilters[i], arrayStyle[i]);
 }
 var pinInput = document.querySelector('.effect-level__value');
-var valuePin;
+
 var onMouseupPin = function () {
-  valuePin = pinInput.value;
+  var valuePin = pinInput.value;
 
 };
 var pin = document.querySelector('.effect-level__pin');
