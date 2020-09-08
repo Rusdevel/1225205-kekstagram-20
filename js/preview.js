@@ -60,6 +60,5 @@
     commentsLoader.classList.add('hidden');
     document.body.classList.add('modal-open');
   };
-
-  init();
+  // init();
 })();
